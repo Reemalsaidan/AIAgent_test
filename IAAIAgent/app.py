@@ -179,7 +179,7 @@ st.markdown(
     }
 
     .white-line {
-        height: 4px;
+        height: 3px;
         background-color: #e5e7eb;
         border-radius: 999px;
         margin: 8px 0 18px 0;
@@ -192,26 +192,17 @@ st.markdown(
         padding: 14px;
         border-radius: 16px;
     }
-
-    .center-download {
-        display: flex;
-        justify-content: center;
-        margin-top: 14px;
-        margin-bottom: 8px;
-    }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# Header
 st.markdown('<div class="main-title">🛡️ AI Internal Audit Compliance Dashboard</div>', unsafe_allow_html=True)
 st.markdown(
     '<div class="sub-title">Compare a mother policy against an internal policy, retrieve relevant evidence, and generate a structured compliance report.</div>',
     unsafe_allow_html=True
 )
 
-# Workflow
 st.markdown("<div class='section-title'>Workflow</div>", unsafe_allow_html=True)
 st.markdown("<div class='white-line'></div>", unsafe_allow_html=True)
 
@@ -228,7 +219,6 @@ with wf3:
 
 st.markdown("<br>", unsafe_allow_html=True)
 
-# Upload section
 st.markdown("<div class='section-title'>Upload Policy Documents</div>", unsafe_allow_html=True)
 st.markdown("<div class='white-line'></div>", unsafe_allow_html=True)
 
@@ -315,19 +305,15 @@ if run_clicked:
                 with c1:
                     st.markdown("<div class='section-title'>Summary</div>", unsafe_allow_html=True)
                     st.markdown("<div class='white-line'></div>", unsafe_allow_html=True)
-                    st.markdown('<div class="result-box">', unsafe_allow_html=True)
                     st.markdown(summary if summary else "No summary available.")
-                    st.markdown("</div>", unsafe_allow_html=True)
 
                 with c2:
                     st.markdown("<div class='section-title'>Findings Overview</div>", unsafe_allow_html=True)
                     st.markdown("<div class='white-line'></div>", unsafe_allow_html=True)
-                    st.markdown('<div class="result-box">', unsafe_allow_html=True)
                     st.write(f"Compliant Areas: **{compliant_count}**")
                     st.write(f"Partially Compliant Areas: **{partial_count}**")
                     st.write(f"Non-Compliant Areas: **{non_compliant_count}**")
                     st.write(f"Recommendations: **{recommendation_count}**")
-                    st.markdown("</div>", unsafe_allow_html=True)
 
                 st.markdown("<br>", unsafe_allow_html=True)
                 st.markdown("<div class='section-title'>Detailed Findings</div>", unsafe_allow_html=True)
@@ -338,35 +324,24 @@ if run_clicked:
                 with d1:
                     st.markdown("<div class='section-title'>Compliant Areas</div>", unsafe_allow_html=True)
                     st.markdown("<div class='white-line'></div>", unsafe_allow_html=True)
-                    st.markdown('<div class="result-box">', unsafe_allow_html=True)
                     st.markdown(compliant if compliant else "- No compliant areas identified.")
-                    st.markdown("</div>", unsafe_allow_html=True)
 
                     st.markdown("<div class='section-title'>Partially Compliant Areas</div>", unsafe_allow_html=True)
                     st.markdown("<div class='white-line'></div>", unsafe_allow_html=True)
-                    st.markdown('<div class="result-box">', unsafe_allow_html=True)
                     st.markdown(partially_compliant if partially_compliant else "- No partially compliant areas identified.")
-                    st.markdown("</div>", unsafe_allow_html=True)
 
                 with d2:
                     st.markdown("<div class='section-title'>Non-Compliant Areas</div>", unsafe_allow_html=True)
                     st.markdown("<div class='white-line'></div>", unsafe_allow_html=True)
-                    st.markdown('<div class="result-box">', unsafe_allow_html=True)
                     st.markdown(non_compliant if non_compliant else "- No non-compliant areas identified.")
-                    st.markdown("</div>", unsafe_allow_html=True)
 
                     st.markdown("<div class='section-title'>Recommendations</div>", unsafe_allow_html=True)
                     st.markdown("<div class='white-line'></div>", unsafe_allow_html=True)
-                    st.markdown('<div class="result-box">', unsafe_allow_html=True)
                     st.markdown(recommendations if recommendations else "- No recommendations available.")
-                    st.markdown("</div>", unsafe_allow_html=True)
 
                 st.markdown("<br>", unsafe_allow_html=True)
                 st.markdown("<div class='section-title'>Full Compliance Report</div>", unsafe_allow_html=True)
                 st.markdown("<div class='white-line'></div>", unsafe_allow_html=True)
-                st.markdown('<div class="result-box">', unsafe_allow_html=True)
-                st.markdown(analysis_text)
-                st.markdown("</div>", unsafe_allow_html=True)
 
                 pdf_file = generate_pdf_report(
                     score=score,
@@ -380,7 +355,7 @@ if run_clicked:
                 )
 
                 st.download_button(
-                    label="Download Full Compliance Report (PDF)",
+                    label="⬇️ Download Full Compliance Report (PDF)",
                     data=pdf_file,
                     file_name="compliance_report.pdf",
                     mime="application/pdf",
